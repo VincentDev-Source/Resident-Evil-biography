@@ -25,11 +25,17 @@ body {
   font-family: Georgia, "Times New Roman", serif;
   color: var(--text);
   background:
+    linear-gradient(180deg, rgba(5, 3, 11, 0.2), rgba(5, 3, 11, 0.72)),
+    var(--page-bg, none),
     radial-gradient(circle at 18% 16%, rgba(125, 60, 255, 0.2), transparent 0 22%),
     radial-gradient(circle at 84% 14%, rgba(68, 25, 126, 0.22), transparent 0 26%),
     radial-gradient(circle at 50% 32%, rgba(120, 62, 210, 0.08), transparent 0 30%),
     linear-gradient(180deg, rgba(8, 6, 18, 0.9), rgba(2, 2, 6, 0.99)),
     #040309;
+  background-size: cover, cover, auto, auto, auto, auto, auto;
+  background-position: center center, center center, center center, center center, center center, center center, center center;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-attachment: fixed, fixed, scroll, scroll, scroll, scroll, scroll;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -202,23 +208,61 @@ a {
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 10px;
+  align-items: flex-start;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-dropdown summary {
   padding: 10px 14px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.02);
   transition: 0.25s ease;
+  cursor: pointer;
+  list-style: none;
 }
 
 .nav-links a:hover,
 .nav-links a:focus-visible,
-.nav-links a.active {
+.nav-links a.active,
+.nav-dropdown summary:hover,
+.nav-dropdown summary:focus-visible,
+.nav-dropdown[open] summary {
   background: rgba(154, 92, 255, 0.18);
   border-color: rgba(154, 92, 255, 0.48);
   box-shadow: 0 0 18px rgba(154, 92, 255, 0.18);
   transform: translateY(-1px);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 260px;
+  padding: 12px;
+  border: 1px solid rgba(216, 195, 255, 0.14);
+  border-radius: 20px;
+  background: rgba(7, 5, 16, 0.94);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(14px);
+}
+
+.dropdown-menu a {
+  display: block;
+  margin-bottom: 8px;
+  border-radius: 14px;
+}
+
+.dropdown-menu a:last-child {
+  margin-bottom: 0;
 }
 
 .hero {
@@ -235,6 +279,58 @@ a {
   border: 1px solid var(--line);
   border-radius: 28px;
   box-shadow: var(--shadow);
+}
+
+body.home-page {
+  --page-bg: url("place/𝐂𝐀𝐒𝐓𝐋𝐄 𝐃𝐈𝐌𝐈𝐓𝐑𝐄𝐒𝐂𝐔 _ home page.jpg");
+}
+
+body.characters-page {
+  --page-bg: url("place/Resident Evil 4 ada wong.jpg");
+}
+
+body.leon-page {
+  --page-bg: url("place/re2 remake leon.jpg");
+}
+
+body.chris-page {
+  --page-bg: url("place/Spencer mansion main hall chris.jpg");
+}
+
+body.jake-page {
+  --page-bg: url("place/resident evil 6 aesthetic jake muller.jpeg");
+}
+
+body.ada-page {
+  --page-bg: url("place/Resident Evil 4 ada wong.jpg");
+}
+
+body.jill-page {
+  --page-bg: url("place/jill valentine.jpg");
+}
+
+body.ethan-page {
+  --page-bg: url("place/Bakers family ethan.jpg");
+}
+
+body.claire-page {
+  --page-bg: url("place/_Resident Evil 2_ Title sequence claire.jpg");
+}
+
+body.rebecca-page {
+  --page-bg: url("place/Inspired by resident evil render with Unreal Engine 4_24 and raytrace, Pasquale  Scionti rebecca.jpg");
+}
+
+body.wesker-page {
+  --page-bg: url("place/Albert.jpg");
+}
+
+body.sherry-page {
+  --page-bg: url("place/Resident Evil 3 Remake sherry.jpg");
+}
+
+body.miranda-page {
+  --page-bg: url("place/𝐂𝐀𝐒𝐓𝐋𝐄 𝐃𝐈𝐌𝐈𝐓𝐑𝐄𝐒𝐂𝐔 _ home page.jpg");
 }
 
 .hero-panel {
@@ -722,6 +818,54 @@ h1 {
   background: rgba(125, 60, 255, 0.06);
 }
 
+.character-selector {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.character-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  padding: 22px;
+  border-radius: 24px;
+  border: 1px solid rgba(216, 195, 255, 0.14);
+  box-shadow: var(--shadow);
+  background:
+    linear-gradient(180deg, rgba(8, 6, 18, 0.1), rgba(5, 4, 12, 0.86)),
+    var(--card-bg, linear-gradient(180deg, rgba(31, 18, 50, 0.68), rgba(8, 7, 16, 0.94)));
+  background-size: cover;
+  background-position: center;
+}
+
+.character-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 14%, rgba(4, 4, 10, 0.8) 100%);
+}
+
+.character-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.character-card h3 {
+  margin-top: 120px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.character-card p {
+  color: var(--muted);
+}
+
+.character-card .chapter-tag {
+  margin-bottom: 0;
+}
+
 .character-hero {
   padding: 72px 0 34px;
 }
@@ -957,6 +1101,10 @@ h1 {
   .cards {
     grid-template-columns: 1fr;
   }
+
+  .character-selector {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -967,6 +1115,12 @@ h1 {
 
   .nav-links {
     justify-content: flex-start;
+  }
+
+  .dropdown-menu {
+    position: static;
+    min-width: 100%;
+    margin-top: 10px;
   }
 
   .hero-copy,
