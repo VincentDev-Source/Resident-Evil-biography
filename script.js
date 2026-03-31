@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { selector: ".character-badge", className: "reveal-left" },
     { selector: ".story-paper", className: "reveal-right" },
     { selector: ".relationship-item", className: "reveal" },
+    { selector: ".gallery-card", className: "reveal-pop" },
     { selector: ".file-chip", className: "reveal-pop" },
     { selector: ".case-item", className: "reveal-pop" },
     { selector: ".signal-item", className: "reveal" },
