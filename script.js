@@ -29,9 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        } else {
+          entry.target.classList.remove("is-visible");
+        }
       });
     },
     { threshold: 0.16, rootMargin: "0px 0px -8% 0px" }
