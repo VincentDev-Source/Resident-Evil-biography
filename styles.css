@@ -1270,3 +1270,393 @@ h1 {
     transform: none !important;
   }
 }
+/* ── PASTE INI DI PALING BAWAH styles.css kamu ── */
+
+/* Glitch effect on h1 */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.glitch-text::before {
+  color: #ff003c;
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+}
+
+.glitch-text::after {
+  color: #00ffe5;
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+}
+
+.glitch-active::before {
+  opacity: 0.7;
+  animation: glitch-top 0.25s steps(2) forwards;
+}
+
+.glitch-active::after {
+  opacity: 0.7;
+  animation: glitch-bot 0.3s steps(2) forwards;
+}
+
+@keyframes glitch-top {
+  0%   { transform: translate(-3px, -2px); }
+  25%  { transform: translate(3px, 0); }
+  50%  { transform: translate(-2px, 1px); }
+  75%  { transform: translate(4px, -1px); }
+  100% { transform: translate(0, 0); opacity: 0; }
+}
+
+@keyframes glitch-bot {
+  0%   { transform: translate(3px, 2px); }
+  25%  { transform: translate(-3px, 0); }
+  50%  { transform: translate(2px, -1px); }
+  75%  { transform: translate(-4px, 1px); }
+  100% { transform: translate(0, 0); opacity: 0; }
+}
+
+/* Typewriter cursor on eyebrow */
+.eyebrow {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Chapter card hover glow */
+.chapter-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.chapter-card:hover {
+  border-color: rgba(125, 60, 255, 0.5);
+  box-shadow: 0 0 28px rgba(125, 60, 255, 0.18), 0 18px 40px rgba(0, 0, 0, 0.34);
+  transform: translateY(-3px);
+}
+
+/* Card hover glow */
+.card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(125, 60, 255, 0.4);
+  box-shadow: 0 0 22px rgba(125, 60, 255, 0.14);
+  transform: translateY(-2px);
+}
+
+/* Stat card hover */
+.stat-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(125, 60, 255, 0.35);
+  box-shadow: 0 0 18px rgba(125, 60, 255, 0.12);
+}
+
+/* Button hover improvements */
+.button-primary {
+  transition: box-shadow 0.25s ease, transform 0.2s ease, filter 0.25s ease;
+}
+
+.button-primary:hover {
+  box-shadow: 0 16px 36px rgba(154, 92, 255, 0.45);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.button-secondary {
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.button-secondary:hover {
+  background: rgba(125, 60, 255, 0.1);
+  border-color: rgba(125, 60, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Stamp flicker base */
+.stamp {
+  transition: opacity 0.08s;
+}
+
+/* File chip hover */
+.file-chip {
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+
+.file-chip:hover {
+  border-color: rgba(125, 60, 255, 0.3);
+  background: rgba(125, 60, 255, 0.07);
+  transform: translateY(-2px);
+}
+
+/* Signal item highlight on hover */
+.signal-item {
+  transition: background 0.2s, padding-left 0.2s;
+  padding-left: 0;
+  border-radius: 8px;
+}
+
+.signal-item:hover {
+  background: rgba(125, 60, 255, 0.06);
+  padding-left: 8px;
+}
+
+/* Nav link active glow pulse */
+.nav-links a.active {
+  animation: nav-pulse 3s ease-in-out infinite;
+}
+
+@keyframes nav-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(154, 92, 255, 0.15); }
+  50%       { box-shadow: 0 0 22px rgba(154, 92, 255, 0.32); }
+}
+
+/* Board note left border pulse */
+.board-note {
+  animation: border-pulse 4s ease-in-out infinite;
+}
+
+@keyframes border-pulse {
+  0%, 100% { border-left-color: var(--blood-bright); }
+  50%       { border-left-color: rgba(200, 80, 255, 0.9); }
+}
+
+/* Pin marks subtle bob */
+body.page-ready .pin-mark {
+  animation: pin-bob 6s ease-in-out infinite;
+}
+
+body.page-ready .pin-right {
+  animation-delay: 1.5s;
+}
+
+@keyframes pin-bob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-3px); }
+}
+
+/* Red vignette flash (injected by JS) already handled in script */
+
+/* Reduce motion: disable everything added above */
+@media (prefers-reduced-motion: reduce) {
+  .glitch-active::before,
+  .glitch-active::after,
+  .nav-links a.active,
+  .board-note,
+  .pin-mark {
+    animation: none !important;
+  }
+
+  .chapter-card:hover,
+  .card:hover,
+  .button-primary:hover,
+  .button-secondary:hover,
+  .file-chip:hover {
+    transform: none !important;
+  }
+}
+/* ── PASTE INI DI PALING BAWAH styles.css kamu ── */
+
+/* Glitch effect on h1 */
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.glitch-text::before {
+  color: #ff003c;
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+}
+
+.glitch-text::after {
+  color: #00ffe5;
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+}
+
+.glitch-active::before {
+  opacity: 0.7;
+  animation: glitch-top 0.25s steps(2) forwards;
+}
+
+.glitch-active::after {
+  opacity: 0.7;
+  animation: glitch-bot 0.3s steps(2) forwards;
+}
+
+@keyframes glitch-top {
+  0%   { transform: translate(-3px, -2px); }
+  25%  { transform: translate(3px, 0); }
+  50%  { transform: translate(-2px, 1px); }
+  75%  { transform: translate(4px, -1px); }
+  100% { transform: translate(0, 0); opacity: 0; }
+}
+
+@keyframes glitch-bot {
+  0%   { transform: translate(3px, 2px); }
+  25%  { transform: translate(-3px, 0); }
+  50%  { transform: translate(2px, -1px); }
+  75%  { transform: translate(-4px, 1px); }
+  100% { transform: translate(0, 0); opacity: 0; }
+}
+
+/* Typewriter cursor on eyebrow */
+.eyebrow {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Chapter card hover glow */
+.chapter-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.chapter-card:hover {
+  border-color: rgba(125, 60, 255, 0.5);
+  box-shadow: 0 0 28px rgba(125, 60, 255, 0.18), 0 18px 40px rgba(0, 0, 0, 0.34);
+  transform: translateY(-3px);
+}
+
+/* Card hover glow */
+.card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(125, 60, 255, 0.4);
+  box-shadow: 0 0 22px rgba(125, 60, 255, 0.14);
+  transform: translateY(-2px);
+}
+
+/* Stat card hover */
+.stat-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(125, 60, 255, 0.35);
+  box-shadow: 0 0 18px rgba(125, 60, 255, 0.12);
+}
+
+/* Button hover improvements */
+.button-primary {
+  transition: box-shadow 0.25s ease, transform 0.2s ease, filter 0.25s ease;
+}
+
+.button-primary:hover {
+  box-shadow: 0 16px 36px rgba(154, 92, 255, 0.45);
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.button-secondary {
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.button-secondary:hover {
+  background: rgba(125, 60, 255, 0.1);
+  border-color: rgba(125, 60, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Stamp flicker base */
+.stamp {
+  transition: opacity 0.08s;
+}
+
+/* File chip hover */
+.file-chip {
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+
+.file-chip:hover {
+  border-color: rgba(125, 60, 255, 0.3);
+  background: rgba(125, 60, 255, 0.07);
+  transform: translateY(-2px);
+}
+
+/* Signal item highlight on hover */
+.signal-item {
+  transition: background 0.2s, padding-left 0.2s;
+  padding-left: 0;
+  border-radius: 8px;
+}
+
+.signal-item:hover {
+  background: rgba(125, 60, 255, 0.06);
+  padding-left: 8px;
+}
+
+/* Nav link active glow pulse */
+.nav-links a.active {
+  animation: nav-pulse 3s ease-in-out infinite;
+}
+
+@keyframes nav-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(154, 92, 255, 0.15); }
+  50%       { box-shadow: 0 0 22px rgba(154, 92, 255, 0.32); }
+}
+
+/* Board note left border pulse */
+.board-note {
+  animation: border-pulse 4s ease-in-out infinite;
+}
+
+@keyframes border-pulse {
+  0%, 100% { border-left-color: var(--blood-bright); }
+  50%       { border-left-color: rgba(200, 80, 255, 0.9); }
+}
+
+/* Pin marks subtle bob */
+body.page-ready .pin-mark {
+  animation: pin-bob 6s ease-in-out infinite;
+}
+
+body.page-ready .pin-right {
+  animation-delay: 1.5s;
+}
+
+@keyframes pin-bob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-3px); }
+}
+
+/* Red vignette flash (injected by JS) already handled in script */
+
+/* Reduce motion: disable everything added above */
+@media (prefers-reduced-motion: reduce) {
+  .glitch-active::before,
+  .glitch-active::after,
+  .nav-links a.active,
+  .board-note,
+  .pin-mark {
+    animation: none !important;
+  }
+
+  .chapter-card:hover,
+  .card:hover,
+  .button-primary:hover,
+  .button-secondary:hover,
+  .file-chip:hover {
+    transform: none !important;
+  }
+}
